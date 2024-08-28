@@ -120,7 +120,7 @@ function Chat() {
                         </Flex>
 
 
-                        <Flex flexDirection='column' h='75vh' overflowY='scroll' border='none' outline='none' mt='8px'>
+                        {/* <Flex flexDirection='column' h='75vh' overflowY='scroll' border='none' outline='none' mt='8px'>
                             {showUser && User ?
                              <Flex my='15px' gap='10px' px='15px'  className="hover" onClick={addChat}>
                                   <Image boxSize='50px' objectFit='cover' src={User.avatar} alt='Dan Abramov' borderRadius='50%' />
@@ -140,7 +140,28 @@ function Chat() {
                                 ))
                             }
 
-                        </Flex>
+                        </Flex> */}
+                        <Flex flexDirection='column' h='75vh' overflowY='scroll' border='none' outline='none' mt='8px'>
+                        {showUser && User ? (
+                            <Flex my='15px' gap='10px' px='15px' className="hover" onClick={addChat}>
+                                <Image boxSize='50px' objectFit='cover' src={User.avatar} alt={User.name} borderRadius='50%' />
+                                <Flex flexDirection='column'>
+                                    <Heading color='white' my='2px' fontSize='17px' fontWeight='500'>{User.name}</Heading>
+                                    <Text color='rgba(255, 255, 255, 0.686);' fontSize='15px'>Hey, There</Text>
+                                </Flex>
+                            </Flex>
+                        ) : (
+                            Array(12).fill('').map((item, index) => (
+                                <Flex my='15px' gap='10px' px='15px' key={index} className="hover">
+                                    <Image boxSize='50px' objectFit='cover' src={images.profile_img2} alt='Default Profile' borderRadius='50%' />
+                                    <Flex flexDirection='column'>
+                                        <Heading color='white' my='2px' fontSize='17px' fontWeight='500'>Richard Sanford</Heading>
+                                        <Text color='rgba(255, 255, 255, 0.686);' fontSize='15px'>Hey, There</Text>
+                                    </Flex>
+                                </Flex>
+                            ))
+                        )}
+                    </Flex>
                     </GridItem>
 
                     <GridItem colSpan='4' bg='gray.100' >
