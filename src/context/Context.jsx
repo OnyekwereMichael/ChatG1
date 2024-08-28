@@ -52,7 +52,7 @@ const AppContextProvider = (props) => {
    if(UserData) {
       const chatRef = doc(db, 'chat', UserData.id)
       const unSub = onSnapshot(chatRef, async (res) => {
-       const chatItems = res.data().chatsData;
+       const chatItems = res.data()?.chatsData || [];
 
        const tempData = []
 
@@ -60,10 +60,18 @@ const AppContextProvider = (props) => {
         const userRef = doc(db, 'users', item.Rid)
         const unsnap = await getDoc(userRef)
         const userData = unsnap.data()
-        tempData.push(...item, userData)
+        // tempData.push(...item, userData)
+        // item is an object not an array, hence you cant use spread operator here
+
+        // Merge item with userData
+        const chatItem = {
+            ...item,
+            userData,
+        };
+        tempData.push(chatItem);
        }
 
-       setchatData(tempData.sort((a,b) => b.updatedAt - a.updatedAt))
+       setchatData(tempData.sort((a, b) => b.updatedAt - a.updatedAt))
       }) 
 
       return () => {
@@ -74,8 +82,10 @@ const AppContextProvider = (props) => {
 
 
     const value = {
-        UserData, setUserData,
-        chatData, setchatData,
+        UserData, 
+        setUserData,
+        chatData,
+        setchatData,
         loadUserData,
     }
 
