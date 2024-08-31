@@ -2,16 +2,18 @@
   background-image: url("../../assets/background.png");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  /* height: 100%; */
 }
 
 form {
   flex-direction: column;
-  background-color: white;
+  background-color: rgb(255, 255, 255, 0.15);
   color: black;
   padding: 30px;
   width: 28%;
   border-radius: 10px;
+  border: 2px solid rgb(255, 255, 255, 0.3);
+  backdrop-filter: blur(30px);
 }
 
 .login {
@@ -20,16 +22,59 @@ form {
 
 ::placeholder {
   font-size: 14px;
+  font-weight: 500;
+  color: black;
 }
 
 .inputField{
-  border: 2px solid ;
+  border: 2px solid rgb(255, 255, 255, 0.6);
   padding: 10px;
   border-radius: 5px;
+  background-color: rgb(255, 255, 255, 0.6);
+}
+
+@media (max-width: 1000px) {
+  .loginBackground {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .container {
+    flex-direction: column;
+  }
+  form {
+    width: 80%;
+    position: relative;
+  }
+  .text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin-left: 5%;
+  }
+  .click {
+    max-inline-size: -webkit-fill-available;
+  }
 }
 
 @media (max-width: 600px) {
+  .loginBackground {
+    padding-top: 1rem;
+    height: 100%;
+  }
   form{
+    flex-direction: column;
     width: 95%;
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .loginBackground {
+    height: 100%;
+}
+  .text {
+    margin-left: -5%;
   }
 }

@@ -1,4 +1,4 @@
-import { Container, Text, Flex, Image, Heading, Box, Input, Textarea, Button, FormControl } from '@chakra-ui/react'
+import { Text, Flex, Image, Heading, Box, Input, Textarea, Button} from '@chakra-ui/react'
 import './Profile.css'
 import images from '../../assets/assets'
 import { useContext, useEffect, useState } from 'react'
